@@ -1,0 +1,9 @@
+# Prepared YOLO split from the original experiment. This release does NOT include the meta/*.txt lists.
+path: /absolute/path/to/UAVDT
+train: meta/train.txt
+val: meta/test.txt
+test: meta/test.txt
+names:
+  0: car
+  1: truck
+  2: bus
