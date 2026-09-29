@@ -1,0 +1,79 @@
+nc: 80
+scales:
+  n: [0.33, 0.25, 1024]
+  s: [0.33, 0.50, 1024]
+  m: [0.67, 0.75, 768]
+  l: [1.00, 1.00, 512]
+  x: [1.00, 1.25, 512]
+
+freqrrr:
+  enabled: true
+  tiny_thr: 32.0
+
+  rrr:
+    enabled: true
+    use_existing_rrr: true
+
+  fprb:
+    enabled: false
+    strides: [8]
+
+  fqa:
+    enabled: false
+
+  tgf:
+    enabled: false
+    strides: [8]
+    gate_loss_weight: 0.05
+
+  rr_gate:
+    enabled: true
+    target_mode: tiny_mask
+    loss_weight: 0.10
+    use_freq_aux: true
+    freq_aux_target_mode: task_aligned
+    freq_aux_loss_weight: 0.05
+    freq_aux_start_epoch: 40
+    freq_aux_warmup_epochs: 20
+    detach_freq_aux: true
+    target_value_mode: score
+    tiny_only: true
+    use_learned_spatial_gate: true
+    use_detail_gain: true
+
+  tgf_detail:
+    enabled: false
+    loss_weight: 0.10
+    use_scalar_gain: true
+
+  freq_gate:
+    enabled: false
+    loss_weight: 0.10
+    use_energy: true
+    use_contrast: true
+    use_learned_spatial_gate: true
+    use_detail_gain: true
+
+  log:
+    short_names: true
+    debug_metrics: false
+
+backbone:
+  - [-1, 1, Conv, [64, 3, 2]]
+  - [-1, 1, Conv, [128, 3, 2]]
+  - [-1, 3, C2f, [128, True]]
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [-1, 6, C2f, [256, True]]
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [-1, 6, C2f, [512, True]]
+  - [-1, 1, SPPF, [512, 5]]
+
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]]
+  - [-1, 3, C2f, [256]]
+  - [[2, 10], 1, RRFusion, [256]]
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 7], 1, Concat, [1]]
+  - [-1, 3, C2f, [512]]
+  - [[11, 14], 1, Detect, [nc]]

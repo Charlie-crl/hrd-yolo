@@ -1,0 +1,38 @@
+# Local environment / caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+._*
+__MACOSX/
+.idea/
+.vscode/
+build/
+dist/
+# Experiments, datasets and model artifacts
+runs/
+weights/
+datasets/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.tflite
+*.mlpackage/
+*.cache
+*.log
+# Credentials / device settings
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+settings.json
+# Tests produce output only in temporary directories
+.coverage
+htmlcov/

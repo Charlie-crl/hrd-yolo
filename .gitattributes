@@ -1,0 +1,6 @@
+# Preserve the audited source bytes across operating systems.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pt binary
