@@ -20,7 +20,9 @@ We propose HRD-YOLO, a high-resolution detail reallocation method for real-time 
 
 ```bash
 # Environment Configuration
-cd HRD-YOLO
+cd hrd-yolo-main
+conda create -n hrd-yolo python=3.10
+conda activate hrd-yolo
 pip install -e .
 # Training：yolo26s example
 yolo detect train data=VisDrone.yaml model=yolo26s.yaml epochs=300 imgsz=640 batch=4 optimizer=MuSGD lr0=0.01 momentum=0.937 weight_decay=0.0005 device=0 
