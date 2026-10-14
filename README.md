@@ -38,62 +38,122 @@ Model: see [ultralytics/cfg/models/26/...](ultralytics/cfg/models/26/)
 
 ## Performance
 
-### Accuracy, Complexity, and Throughput of the YOLO26, FBRT-YOLO, and HRD-YOLO Model Families on VisDrone
+### VisDrone · Model-family comparison
 
-| **Model**   | **AP**   | **AP50** | **FLOPs**   | **Params**  | **FPS** |
-| ----------- | -------- | -------- | ----------- | ----------- | ------- |
-| YOLO26-N    | 19.9     | 34.5     | 5.2 G       | 2.5 M       | 106     |
-| FBRT-YOLO-N | 20.2     | 34.4     | 6.7 G       | 0.9 M       | 192     |
-| HRD-YOLO-N  | **20.3** | **35.4** | **4.2  G**  | **0.7  M**  | 150     |
-| YOLO26-S    | 24.4     | 41.1     | 20.5 G      | 9.9 M       | 105     |
-| FBRT-YOLO-S | 25.9     | 42.4     | 22.9 G      | 2.9 M       | 143     |
-| HRD-YOLO-S  | **26.0** | **43.2** | **16.5  G** | 2.9 M       | **149** |
-| YOLO26-M    | 27.8     | 45.9     | 67.9 G      | 21.8 M      | 94      |
-| FBRT-YOLO-M | 28.4     | 45.9     | 58.7 G      | 7.2 M       | 94      |
-| HRD-YOLO-M  | 28.1     | **46.6** | 66.5 G      | 11.5 M      | **133** |
-| YOLO26-L    | 28.8     | 47.3     | 86.1 G      | 26.2 M      | 68      |
-| FBRT-YOLO-L | 29.7     | 47.7     | 119.2  G    | 14.6 M      | 70      |
-| HRD-YOLO-L  | 29.3     | **47.9** | **82.4  G** | **14.2  M** | **93**  |
-| YOLO26-X    | 29.8     | 48.7     | 193.4  G    | 58.8 M      | 66      |
-| FBRT-YOLO-X | 30.1     | 48.4     | 185.8  G    | 22.8 M      | 52      |
-| HRD-YOLO-X  | **30.2** | **49.0** | **185.0 G** | 31.8 M      | **88**  |
+Accuracy, complexity, and throughput across N/S/M/L/X scales.
+**Bold metrics** mark the best listed value within each scale group; ties are included.
+↑ Higher is better. ↓ Lower is better.
 
-### Detection Accuracy Compared With Representative Aerial Image Detectors on VisDrone
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="205">Model</th>
+      <th align="right" width="105">AP&nbsp;↑</th>
+      <th align="right" width="110">AP<sub>50</sub>&nbsp;↑</th>
+      <th align="right" width="145">FLOPs (G)&nbsp;↓</th>
+      <th align="right" width="145">Params (M)&nbsp;↓</th>
+      <th align="right" width="100">FPS&nbsp;↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><th colspan="6" align="left">N-scale</th></tr>
+    <tr><td align="left" height="38">YOLO26-N</td><td align="right">19.9</td><td align="right">34.5</td><td align="right">5.2</td><td align="right">2.5</td><td align="right">106</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-N</td><td align="right">20.2</td><td align="right">34.4</td><td align="right">6.7</td><td align="right">0.9</td><td align="right"><strong>192</strong></td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-N</strong></td><td align="right"><strong>20.3</strong></td><td align="right"><strong>35.4</strong></td><td align="right"><strong>4.2</strong></td><td align="right"><strong>0.7</strong></td><td align="right">150</td></tr>
+    <tr><th colspan="6" align="left">S-scale</th></tr>
+    <tr><td align="left" height="38">YOLO26-S</td><td align="right">24.4</td><td align="right">41.1</td><td align="right">20.5</td><td align="right">9.9</td><td align="right">105</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-S</td><td align="right">25.9</td><td align="right">42.4</td><td align="right">22.9</td><td align="right"><strong>2.9</strong></td><td align="right">143</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-S</strong></td><td align="right"><strong>26.0</strong></td><td align="right"><strong>43.2</strong></td><td align="right"><strong>16.5</strong></td><td align="right"><strong>2.9</strong></td><td align="right"><strong>149</strong></td></tr>
+    <tr><th colspan="6" align="left">M-scale</th></tr>
+    <tr><td align="left" height="38">YOLO26-M</td><td align="right">27.8</td><td align="right">45.9</td><td align="right">67.9</td><td align="right">21.8</td><td align="right">94</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-M</td><td align="right"><strong>28.4</strong></td><td align="right">45.9</td><td align="right"><strong>58.7</strong></td><td align="right"><strong>7.2</strong></td><td align="right">94</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-M</strong></td><td align="right">28.1</td><td align="right"><strong>46.6</strong></td><td align="right">66.5</td><td align="right">11.5</td><td align="right"><strong>133</strong></td></tr>
+    <tr><th colspan="6" align="left">L-scale</th></tr>
+    <tr><td align="left" height="38">YOLO26-L</td><td align="right">28.8</td><td align="right">47.3</td><td align="right">86.1</td><td align="right">26.2</td><td align="right">68</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-L</td><td align="right"><strong>29.7</strong></td><td align="right">47.7</td><td align="right">119.2</td><td align="right">14.6</td><td align="right">70</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-L</strong></td><td align="right">29.3</td><td align="right"><strong>47.9</strong></td><td align="right"><strong>82.4</strong></td><td align="right"><strong>14.2</strong></td><td align="right"><strong>93</strong></td></tr>
+    <tr><th colspan="6" align="left">X-scale</th></tr>
+    <tr><td align="left" height="38">YOLO26-X</td><td align="right">29.8</td><td align="right">48.7</td><td align="right">193.4</td><td align="right">58.8</td><td align="right">66</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-X</td><td align="right">30.1</td><td align="right">48.4</td><td align="right">185.8</td><td align="right"><strong>22.8</strong></td><td align="right">52</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-X</strong></td><td align="right"><strong>30.2</strong></td><td align="right"><strong>49.0</strong></td><td align="right"><strong>185.0</strong></td><td align="right">31.8</td><td align="right"><strong>88</strong></td></tr>
+  </tbody>
+</table>
 
-| **Method**   | **AP**   | **AP50** | **AP75** |
-| ------------ | -------- | -------- | -------- |
-| DMNet        | 29.4     | 49.3     | 30.6     |
-| QueryDet     | 28.3     | 48.1     | 28.8     |
-| CEASC        | 28.7     | 50.7     | 28.4     |
-| YOLC-R50     | 28.9     | 51.4     | 28.3     |
-| FBRT-YOLO-X  | 30.1     | 48.4     | 31.7     |
-| UAV-DETR-R18 | 29.8     | 48.8     | —        |
-| HRD-YOLO-X   | **30.2** | 49.0     | 30.9     |
+### VisDrone · Representative detectors
 
-### Detection Accuracy on UAVDT
+**Bold metrics** mark the best listed value in each column. — indicates an unreported value.
 
-| **Method**  | **AP**   | **AP50** | **AP75** |
-| ----------- | -------- | -------- | -------- |
-| ClusDet     | 13.7     | 26.5     | 12.5     |
-| GLSAN       | 17.0     | 28.1     | 18.8     |
-| DREN        | 15.1     | —        | —        |
-| GFL         | 16.9     | 29.5     | 17.9     |
-| CEASC       | 17.1     | 30.9     | 17.8     |
-| FBRT-YOLO-X | 18.4     | 31.1     | 18.9     |
-| YOLO26-X    | 21.6     | 33.8     | 24.4     |
-| HRD-YOLO-X  | **23.0** | 35.5     | 25.6     |
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="270">Method</th>
+      <th align="right" width="145">AP&nbsp;↑</th>
+      <th align="right" width="145">AP<sub>50</sub>&nbsp;↑</th>
+      <th align="right" width="145">AP<sub>75</sub>&nbsp;↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="left" height="38">DMNet</td><td align="right">29.4</td><td align="right">49.3</td><td align="right">30.6</td></tr>
+    <tr><td align="left" height="38">QueryDet</td><td align="right">28.3</td><td align="right">48.1</td><td align="right">28.8</td></tr>
+    <tr><td align="left" height="38">CEASC</td><td align="right">28.7</td><td align="right">50.7</td><td align="right">28.4</td></tr>
+    <tr><td align="left" height="38">YOLC-R50</td><td align="right">28.9</td><td align="right"><strong>51.4</strong></td><td align="right">28.3</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-X</td><td align="right">30.1</td><td align="right">48.4</td><td align="right"><strong>31.7</strong></td></tr>
+    <tr><td align="left" height="38">UAV-DETR-R18</td><td align="right">29.8</td><td align="right">48.8</td><td align="right">—</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-X</strong></td><td align="right"><strong>30.2</strong></td><td align="right">49.0</td><td align="right">30.9</td></tr>
+  </tbody>
+</table>
 
-### **Progressive Ablation Results for HRD-YOLO-S**
+### UAVDT · Detection accuracy
 
-| **Configuration**      | **AP**     | **AP50**   | **AP75**   | **GFLOPs** | **Params (M)** |
-| ---------------------- | ---------- | ---------- | ---------- | ---------- | -------------- |
-| YOLO26-S               | 24.392     | 41.139     | 24.482     | 20.5       | 9.9            |
-| + *P*5 removal         | 24.603     | 41.289     | 24.882     | 14.8       | 2.7            |
-| + Direct  injection    | 24.907     | 42.272     | 25.053     | 15.9       | 2.8            |
-| + Main  gate           | 25.123     | 42.219     | 25.462     | 16.5       | 2.9            |
-| + RRGate               | 25.326     | 42.770     | 25.349     | 16.5       | 2.9            |
-| + FreqAux  (zero cues) | 25.873     | 43.080     | 26.115     | 16.5       | 2.9            |
-| HRD-YOLO-S (Full)      | **25.997** | **43.174** | **26.450** | 16.5       | 2.9            |
+**Bold metrics** mark the best listed value in each column. — indicates an unreported value.
+
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="270">Method</th>
+      <th align="right" width="145">AP&nbsp;↑</th>
+      <th align="right" width="145">AP<sub>50</sub>&nbsp;↑</th>
+      <th align="right" width="145">AP<sub>75</sub>&nbsp;↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="left" height="38">ClusDet</td><td align="right">13.7</td><td align="right">26.5</td><td align="right">12.5</td></tr>
+    <tr><td align="left" height="38">GLSAN</td><td align="right">17.0</td><td align="right">28.1</td><td align="right">18.8</td></tr>
+    <tr><td align="left" height="38">DREN</td><td align="right">15.1</td><td align="right">—</td><td align="right">—</td></tr>
+    <tr><td align="left" height="38">GFL</td><td align="right">16.9</td><td align="right">29.5</td><td align="right">17.9</td></tr>
+    <tr><td align="left" height="38">CEASC</td><td align="right">17.1</td><td align="right">30.9</td><td align="right">17.8</td></tr>
+    <tr><td align="left" height="38">FBRT-YOLO-X</td><td align="right">18.4</td><td align="right">31.1</td><td align="right">18.9</td></tr>
+    <tr><td align="left" height="38">YOLO26-X</td><td align="right">21.6</td><td align="right">33.8</td><td align="right">24.4</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-X</strong></td><td align="right"><strong>23.0</strong></td><td align="right"><strong>35.5</strong></td><td align="right"><strong>25.6</strong></td></tr>
+  </tbody>
+</table>
+
+### HRD-YOLO-S · Progressive ablation
+
+Configurations follow the original progressive sequence.
+**Bold accuracy values** highlight the final configuration.
+
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="250">Configuration</th>
+      <th align="right" width="90">AP&nbsp;↑</th>
+      <th align="right" width="95">AP<sub>50</sub>&nbsp;↑</th>
+      <th align="right" width="95">AP<sub>75</sub>&nbsp;↑</th>
+      <th align="right" width="145">FLOPs (G)&nbsp;↓</th>
+      <th align="right" width="135">Params (M)&nbsp;↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="left" height="38">YOLO26-S</td><td align="right">24.392</td><td align="right">41.139</td><td align="right">24.482</td><td align="right">20.5</td><td align="right">9.9</td></tr>
+    <tr><td align="left" height="38">+ P<sub>5</sub> removal</td><td align="right">24.603</td><td align="right">41.289</td><td align="right">24.882</td><td align="right">14.8</td><td align="right">2.7</td></tr>
+    <tr><td align="left" height="38">+ Direct injection</td><td align="right">24.907</td><td align="right">42.272</td><td align="right">25.053</td><td align="right">15.9</td><td align="right">2.8</td></tr>
+    <tr><td align="left" height="38">+ Main gate</td><td align="right">25.123</td><td align="right">42.219</td><td align="right">25.462</td><td align="right">16.5</td><td align="right">2.9</td></tr>
+    <tr><td align="left" height="38">+ RRGate</td><td align="right">25.326</td><td align="right">42.770</td><td align="right">25.349</td><td align="right">16.5</td><td align="right">2.9</td></tr>
+    <tr><td align="left" height="38">+ FreqAux (zero cues)</td><td align="right">25.873</td><td align="right">43.080</td><td align="right">26.115</td><td align="right">16.5</td><td align="right">2.9</td></tr>
+    <tr><td align="left" height="38"><strong>HRD-YOLO-S (Full)</strong></td><td align="right"><strong>25.997</strong></td><td align="right"><strong>43.174</strong></td><td align="right"><strong>26.450</strong></td><td align="right">16.5</td><td align="right">2.9</td></tr>
+  </tbody>
+</table>
 
 ### Visualization
 
